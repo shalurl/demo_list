@@ -24,6 +24,11 @@ sap.ui.define(
             var mProductModel = that.getOwnerComponent().getModel("mproducts");
             var aProducts = mProductModel.getProperty("/ProductCollection");
           },
+
+        
+          /**
+           * This function navigate us to detail page of the product.
+           */
           onPressNavBack: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("RouteList");
