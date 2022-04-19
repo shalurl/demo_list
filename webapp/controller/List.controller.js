@@ -23,6 +23,10 @@ sap.ui.define([
             oBinding.filter([oFilter]);
            }
         },
+
+        /**
+         * This function navigates up to detail page
+         */
         onPressNext: function(){
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("DetailView");
@@ -40,7 +44,8 @@ sap.ui.define([
             MessageBox.show(dateTime);
     
     
-          }
+    
+        }
           });
         }
       );
