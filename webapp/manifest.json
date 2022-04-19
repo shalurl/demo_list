@@ -1,0 +1,152 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+      "id": "demolist",
+      "type": "application",
+      "i18n": "i18n/i18n.properties",
+      "applicationVersion": {
+        "version": "0.0.1"
+      },
+      "title": "{{appTitle}}",
+      "description": "{{appDescription}}",
+      "resources": "resources.json",
+      "dataSources": {
+        "mainService": {
+          "uri": "/sap/opu/odata/",
+          "type": "OData",
+          "settings": {
+            "annotations": [],
+            "localUri": "localService/metadata.xml",
+            "odataVersion": "4.0"
+          }
+      },
+      "ds_products":{
+          "uri":"model/product.json",
+          "type":"JSON"
+      }
+     }
+    },
+    "sap.ui": {
+      "technology": "UI5",
+      "icons": {
+        "icon": "",
+        "favIcon": "",
+        "phone": "",
+        "phone@2": "",
+        "tablet": "",
+        "tablet@2": ""
+      },
+      "deviceTypes": {
+        "desktop": true,
+        "tablet": true,
+        "phone": true
+      }
+    },
+    "sap.ui5": {
+      "flexEnabled": true,
+      "dependencies": {
+        "minUI5Version": "1.99.0",
+        "libs": {
+          "sap.m": {},
+          "sap.ui.core": {},
+          "sap.f": {},
+          "sap.suite.ui.generic.template": {},
+          "sap.ui.comp": {},
+          "sap.ui.generic.app": {},
+          "sap.ui.table": {},
+          "sap.ushell": {}
+        }
+      },
+      "contentDensities": {
+        "compact": true,
+        "cozy": true
+      },
+      "models": {
+        "i18n": {
+          "type": "sap.ui.model.resource.ResourceModel",
+          "settings": {
+            "bundleName": "demolist.i18n.i18n"
+          }
+        },
+        "mproducts":{
+          "type": "sap.ui.model.json.JSONModel",
+          "dataSource": "ds_products"
+        },
+        "": {
+          "dataSource": "mainService",
+          "preload": true,
+          "settings": {
+            "synchronizationMode": "None",
+            "operationMode": "Server",
+            "autoExpandSelect": true,
+            "earlyRequests": true,
+            "groupId": "$direct"
+          }
+        }
+      },
+      "resources": {
+      
+       "css": [
+          {
+            "uri": "css/style.css"
+          }
+        ],
+        "js":[
+          {
+              "uri": "lib/moment.min.js"
+          }
+      ]
+      },
+      "routing": {
+        "config": {
+          "routerClass": "sap.m.routing.Router",
+          "viewType": "XML",
+          "async": true,
+          "viewPath": "demolist.view",
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "clearControlAggregation": false
+        },
+        "routes": [
+          {
+            "name": "RouteList",
+            "pattern": "RouteList",
+            "target": [
+              "TargetList"
+            ]
+          },
+          {
+               "name":"DetailView",
+               "pattern":"ProductDetail/{ProductId}", 
+               "target":[
+                   "TargetDetail"
+                 ]
+            }
+        ],
+        "targets": {
+          "TargetList": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "idList",
+            "viewName": "List"
+          },
+          "TargetDetail":{
+              "viewName": "Detail",
+              "viewId": "Detail",
+              "viewType": "XML",
+              "transition":"slide"
+          }
+        }
+      },
+      "rootView": {
+        "viewName": "demolist.view.List",
+        "type": "XML",
+        "async": true,
+        "id": "List"
+      }
+    }
+  }
+  
+  
+

@@ -1,0 +1,18 @@
+<mvc:View 
+    controllerName="demolist.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Shell id="shell">
+        <App id="appDetail">
+            <pages>
+                <Page id="page" title="ProductDetail" showHeader="true" showNavButton="true" navButtonPress="onPressNavBack" >
+                    <content>
+                         
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>
